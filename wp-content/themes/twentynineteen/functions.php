@@ -12,6 +12,11 @@
 /**
  * Twenty Nineteen only works in WordPress 4.7 or later.
  */
+
+// require_once "library/carbon-fields/vendor/autoload.php";
+// require_once "inc/mb/metabox.php";
+require_once "inc/carbon.php";
+
 if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 	return;
@@ -173,7 +178,7 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 		);
 
 		// Add support for responsive embedded content.
-		add_theme_support( 'responsive-embeds' );
+        add_theme_support( 'responsive-embeds' );        
 	}
 endif;
 add_action( 'after_setup_theme', 'twentynineteen_setup' );
