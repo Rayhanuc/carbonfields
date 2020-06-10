@@ -46,6 +46,13 @@ function prefix_post_meta() {
     ->add_fields([
         Field::make('text','prefix_custom','Custom'),
     ]);
+
+    Container::make('post_meta',__('Featured Images', 'twentynineteen'))
+    ->where('post_type','=','post')
+    ->set_context('side')
+    ->add_fields([
+        Field::make('image','prefix_image','Featured Image'),
+    ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');
 

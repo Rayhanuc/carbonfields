@@ -21,7 +21,13 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				get_template_part( 'template-parts/content/content', 'single' );
+                get_template_part( 'template-parts/content/content', 'single' );
+                
+                echo "========================<br/>";
+                // echo carbon_get_the_post_meta('prefix_image')."<br/>";
+                $prefix_image_source = wp_get_attachment_image_src(carbon_get_the_post_meta('prefix_image'),'large');
+                echo "<img src='".esc_url($prefix_image_source[0])."'><br/>";
+                echo "========================<br/>";
 
 				if ( is_singular( 'attachment' ) ) {
 					// Parent post navigation.
