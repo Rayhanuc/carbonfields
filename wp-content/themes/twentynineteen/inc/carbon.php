@@ -33,6 +33,19 @@ function prefix_post_meta() {
     ->add_fields([
         Field::make('text','prefix_homepage','Homepage Info'),
     ]);
+
+    Container::make('post_meta',__('Custom Condition', 'twentynineteen'))
+    ->where('post_type','=','page')
+    ->where('post_id','CUSTOM',function($id){
+        if(carbon_get_post_meta($id, 'prefix_homepage') == 'abcd'){
+            return true;
+        }
+        return false;
+    })
+    ->set_priority( 'default' )
+    ->add_fields([
+        Field::make('text','prefix_custom','Custom'),
+    ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');
 
