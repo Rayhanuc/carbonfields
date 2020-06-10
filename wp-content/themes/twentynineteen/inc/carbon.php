@@ -6,16 +6,35 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 function prefix_post_meta() {
-    Container::make('post_meta','Sample Metabox')
+    /* Container::make('post_meta',__('Sample Metabox', 'twentynineteen'))
+    ->set_priority( 'core' )
+    ->set_context('side')
     ->where('post_type','=','page')
     ->add_fields([
         Field::make('text','prefix_address')->set_value('Sample Address'),
         Field::make('text','prefix_opening'),
         Field::make('checkbox','prefix_open','Is Active')->set_option_value('yes'),
+    ]); */
+
+    Container::make('post_meta',__('Only Image', 'twentynineteen'))
+    ->set_priority( 'default' )
+    ->set_context('side')
+    ->where('post_type','=','post')
+    ->where('post_format','=','image')
+    ->add_fields([
+        Field::make('text','prefix_image_title','Image Title'),
+    ]);
+
+    Container::make('post_meta',__('For Homepage', 'twentynineteen'))
+    ->where('post_type','=','page')
+    ->where('post_template','=','page-templates/template.php')
+    ->set_context('side')
+    ->set_priority( 'default' )
+    ->add_fields([
+        Field::make('text','prefix_homepage','Homepage Info'),
     ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');
-
 
 function prefix_load(){
     \Carbon_Fields\Carbon_Fields::boot();

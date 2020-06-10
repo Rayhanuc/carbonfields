@@ -21,7 +21,17 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
 
-				get_template_part( 'template-parts/content/content', 'page' );
+                get_template_part( 'template-parts/content/content', 'page' );
+                
+                // data show from current post
+                echo "==================<br/>";
+                echo __("Address: ","twentynineteen").carbon_get_the_post_meta('prefix_address')."<br/>";
+                echo __("Opening Hours: ","twentynineteen").carbon_get_the_post_meta('prefix_opening')."<br/>";
+                echo __("Opening: ","twentynineteen").carbon_get_the_post_meta('prefix_open')."<br/>";
+                echo "==================";
+
+                // data show from another post
+                // carbon_get_post_meta(get_the_ID(),'prefix_opening');
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) {

@@ -31,6 +31,8 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function twentynineteen_setup() {
+
+        add_theme_support('post-formats',['image','audio','video']);
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
