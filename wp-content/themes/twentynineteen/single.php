@@ -28,6 +28,12 @@ get_header();
                 $prefix_image_source = wp_get_attachment_image_src(carbon_get_the_post_meta('prefix_image'),'large');
                 echo "<img src='".esc_url($prefix_image_source[0])."'><br/>";
                 echo "========================<br/>";
+                $images = carbon_get_the_post_meta('prefix_gallery');
+                // print_r($images)."<br/>";
+                foreach($images as $image){
+                    echo wp_get_attachment_image($image);
+                }
+                echo "========================<br/>";
 
 				if ( is_singular( 'attachment' ) ) {
 					// Parent post navigation.
