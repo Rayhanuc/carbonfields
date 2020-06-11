@@ -59,6 +59,12 @@ function prefix_post_meta() {
     ->add_fields([
         Field::make('media_gallery','prefix_gallery','Gallery'),
     ]);
+
+    Container::make('post_meta',__('Favorite Places', 'twentynineteen'))
+    ->where('post_type','=','post')
+    ->add_fields([
+        Field::make('html','prefix_html','HTML Data')->set_html('<strong>This is some <em>impotant</em> info</strong>'),
+    ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');
 
