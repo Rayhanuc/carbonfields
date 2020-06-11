@@ -60,10 +60,23 @@ function prefix_post_meta() {
         Field::make('media_gallery','prefix_gallery','Gallery'),
     ]);
 
-    Container::make('post_meta',__('Favorite Places', 'twentynineteen'))
+    Container::make('post_meta',__('Html Data', 'twentynineteen'))
     ->where('post_type','=','post')
     ->add_fields([
         Field::make('html','prefix_html','HTML Data')->set_html('<strong>This is some <em>impotant</em> info</strong>'),
+    ]);
+
+    Container::make('post_meta',__('Favorite Places', 'twentynineteen'))
+    ->where('post_type','=','post')
+    ->add_fields([
+        Field::make('multiselect','prefix_ms','Multi Select')
+            ->set_options([
+                'dhaka' => 'Dhaka',
+                'bogra' => 'Bogra',
+                'comilla' => 'Comilla',
+                'rajshahi' => 'Rajshahi',
+                'chittagong' => 'Chittagong'
+            ])
     ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');

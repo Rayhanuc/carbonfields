@@ -34,6 +34,8 @@ get_header();
                     echo wp_get_attachment_image($image);
                 }
                 echo "========================<br/>";
+                print_r(carbon_get_the_post_meta('prefix_ms'));
+                echo "========================<br/>";
 
 				if ( is_singular( 'attachment' ) ) {
 					// Parent post navigation.
