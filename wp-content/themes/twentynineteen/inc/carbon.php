@@ -96,6 +96,33 @@ function prefix_post_meta() {
 
 
     ]);
+
+    Container::make('post_meta',__('Cars', 'twentynineteen'))
+    ->where('post_type','=','page')
+    ->where('post_template', '=', 'page-templates/car-shop.php')
+    ->add_fields([
+        Field::make('complex','cars', __('Available Cars','twentynineteen'))
+        ->add_fields([
+            Field::make( 'select', 'manufacturer', __( 'Manufacturer' ) )
+                ->add_options( array(
+                    'toyota' => __( 'Toyota' ),
+                    'nissan' => __( 'Nissan' ),
+                    'Kia' => __( 'kia' ),
+                ) ),
+            Field::make( 'select', 'model', __( 'Model' ) )
+                ->add_options( array(
+                    'corolla' => __( 'Corolla' ),
+                    'axio' => __( 'Axio' ),
+                    'sunny' => __( 'sunny' ),
+                    'tida' => __( 'Tida' ),
+                    'almera' => __( 'Almera' ),
+                ) ),
+            Field::make( 'text', 'quantity', __( 'Quantity' ) )
+
+        ])
+    ]);
+
+
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');
 
