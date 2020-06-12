@@ -76,7 +76,25 @@ function prefix_post_meta() {
                 'comilla' => 'Comilla',
                 'rajshahi' => 'Rajshahi',
                 'chittagong' => 'Chittagong'
-            ])
+            ]),
+
+            Field::make( 'complex', 'crb_slider', __( 'Slider' ) )
+                ->add_fields( array(
+                    Field::make( 'text', 'title', __( 'Slide Title' ) ),
+                    Field::make( 'image', 'photo', __( 'Slide Photo' ) ),
+                ) ),
+            Field::make( 'complex', 'crb_slides' )
+                ->add_fields( array(
+                    Field::make( 'image', 'image' ),
+                    Field::make( 'complex', 'slide_fragments' )
+                        ->add_fields( array(
+                            Field::make( 'text', 'fragment_text' ),
+                            Field::make( 'select', 'fragment_position' )
+                                ->add_options( array( 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right' ) ),
+                        ))
+                )),
+
+
     ]);
 }
 add_action('carbon_fields_register_fields','prefix_post_meta');

@@ -35,7 +35,9 @@ get_header();
                 }
                 echo "========================<br/>";
                 print_r(carbon_get_the_post_meta('prefix_ms'));
-                echo "========================<br/>";
+                echo "========================<br/><pre>";
+                print_r(carbon_get_the_post_meta('crb_slides'));
+                echo "</pre><br/>========================<br/>";
 
 				if ( is_singular( 'attachment' ) ) {
 					// Parent post navigation.
