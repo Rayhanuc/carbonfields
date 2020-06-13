@@ -34,6 +34,10 @@
 				the_excerpt();
 			} else {
 				the_content( __( 'Continue reading', 'twentytwenty' ) );
+				// echo carbon_get_the_post_meta('cbd_office_address');
+				// echo carbon_get_the_post_meta('cbd_office_timing');
+				// echo carbon_get_the_post_meta('cbd_let');
+				echo carbon_get_the_post_meta('cbd_lon');
 			}
 			?>
 
