@@ -56,12 +56,13 @@ function cbd_tabedui() {
     Container::make("theme_options",__('Office Details', 'carbon-demo'))
     // ->where('post_type','=','page')
     ->add_tab(__("Office Details"),[
-        Field::make('textarea','cbd_office_address',__('Office Address', 'carbon-demo')),
-        Field::make('text','cbd_office_timing',__('Office Timing', 'carbon-demo')),
+        Field::make('textarea','cbd_office_address',__('Office Address', 'carbon-demo'))->set_width(50),
+        Field::make('text','cbd_office_timing',__('Office Timing', 'carbon-demo'))->set_width(50),
     ])
     ->add_tab(__("Office Location"),[
-        Field::make('text','cbd_let',__('Lattitude', 'carbon-demo')),
-        Field::make('text','cbd_lon',__('Longitude', 'carbon-demo')),
+        Field::make('text','cbd_let',__('Lattitude', 'carbon-demo'))->set_width(50),
+        Field::make('text','cbd_lon',__('Longitude', 'carbon-demo'))->set_width(50),
+        Field::make('text','cbd_dummy_ta',__('Extra Info', 'carbon-demo')),
     ]);
 }
 add_action('carbon_fields_register_fields','cbd_tabedui');
