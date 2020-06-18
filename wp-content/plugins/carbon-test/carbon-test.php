@@ -64,5 +64,43 @@ function cbd_tabedui() {
         Field::make('text','cbd_lon',__('Longitude', 'carbon-demo'))->set_width(50),
         Field::make('text','cbd_dummy_ta',__('Extra Info', 'carbon-demo')),
     ]);
+
+    Container::make("post_meta",__('Example of Complex Fields', 'carbon-demo'))
+    ->where('post_type','=', 'page')
+    ->add_fields(array(
+        Field::make( 'complex', 'crb_media_item' )
+            // ->set_layout('tabbed-vertical')
+            ->set_layout('tabbed-horizontal')
+            ->set_duplicate_groups_allowed( false )
+            ->add_fields( 'photograph', array(
+                Field::make( 'image', 'image' ),
+                Field::make( 'text', 'caption' ),
+            ) )
+            ->add_fields( 'movie', array(
+                Field::make( 'file', 'video' ),
+                Field::make( 'text', 'title' ),
+                Field::make( 'text', 'length' ),
+            ) )
+            ->add_fields( 'image', array(
+                Field::make( 'file', 'video' ),
+                Field::make( 'text', 'title' ),
+                Field::make( 'text', 'length' ),
+            ) )
+            ->add_fields( 'poster', array(
+                Field::make( 'file', 'video' ),
+                Field::make( 'text', 'title' ),
+                Field::make( 'text', 'length' ),
+            ) ),
+
+    ));
+
+
 }
+add_action('carbon_fields_register_fields','cbd_tabedui');
+
+
+
+
+
+
 add_action('carbon_fields_register_fields','cbd_tabedui');
